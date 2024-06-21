@@ -35,14 +35,46 @@
         </div>
 
         <div class="navbar-extra">
-            <a href="#" id="search"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="search-button"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
             <a href="#" id="menu"><i data-feather="menu"></i></a>
         </div>
 
         <!-- search form start -->
-
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="Search">
+            <label for="search-box"><i data-feather="search"></i></label>
+        </div>
         <!-- search form end -->
+
+        <!-- shopping cart start -->
+        <div class="shopping-cart">
+            <div class="cart-item">
+                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
+                <div class="item-detail">
+                    <h3>Product 1</h3>
+                    <div class="item-price">IDR 199.000</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+            <div class="cart-item">
+                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
+                <div class="item-detail">
+                    <h3>Product 1</h3>
+                    <div class="item-price">IDR 199.000</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+            <div class="cart-item">
+                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
+                <div class="item-detail">
+                    <h3>Product 1</h3>
+                    <div class="item-price">IDR 199.000</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+        </div>
+        <!-- shopping cart end -->
     </nav>
 
     <!-- Navbar end -->
@@ -52,9 +84,7 @@
         <main class="content">
             <h1>Mari Beli Agar Saya Punya <span>Uang</span></h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus blanditiis facere delectus quisquam
-                aliquid molestiae deleniti praesentium voluptas harum nisi! Soluta, doloribus. Aspernatur explicabo
-                rerum temporibus dolor nemo, molestiae distinctio!</p>
-            <a href="#" class="cta">Beli Sekarang</a>
+                aliquid molestiae deleniti praesentium voluptas harum nisi!</p>
         </main>
     </section>
     <!-- Hero Section End -->
@@ -82,25 +112,57 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod, magni asperiores quis obcaecati assumenda
             quia delectus officiis sint omnis vero in neque facere quos rem nemo veniam quasi temporibus.</p>
         <div class="row">
-            <div class="katalog-card">
-                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Black Jeans" class="katalog-card-img">
-                <h3 class="katalog-card-title">- Black Jeans</h3>
-                <p class="katalog-card-price">IDR 200.000</p>
+            <div class="product-card">
+                <div class="product-icons">
+                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+                </div>
+                <div class="product-image">
+                    <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
+                </div>
+                <div class="product-content">
+                    <h3>Black Jeans</h3>
+                </div>
+                <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
             </div>
-            <div class="katalog-card">
-                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Black Jeans" class="katalog-card-img">
-                <h3 class="katalog-card-title">- Black Jeans</h3>
-                <p class="katalog-card-price">IDR 200.000</p>
+            <div class="product-card">
+                <div class="product-icons">
+                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+                </div>
+                <div class="product-image">
+                    <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
+                </div>
+                <div class="product-content">
+                    <h3>Black Jeans</h3>
+                </div>
+                <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
             </div>
-            <div class="katalog-card">
-                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Black Jeans" class="katalog-card-img">
-                <h3 class="katalog-card-title">- Black Jeans</h3>
-                <p class="katalog-card-price">IDR 200.000</p>
+            <div class="product-card">
+                <div class="product-icons">
+                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+                </div>
+                <div class="product-image">
+                    <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
+                </div>
+                <div class="product-content">
+                    <h3>Black Jeans</h3>
+                </div>
+                <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
             </div>
-            <div class="katalog-card">
-                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Black Jeans" class="katalog-card-img">
-                <h3 class="katalog-card-title">- Black Jeans</h3>
-                <p class="katalog-card-price">IDR 200.000</p>
+            <div class="product-card">
+                <div class="product-icons">
+                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+                </div>
+                <div class="product-image">
+                    <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
+                </div>
+                <div class="product-content">
+                    <h3>Black Jeans</h3>
+                </div>
+                <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
             </div>
         </div>
     </section>
@@ -157,6 +219,24 @@
         </div>
     </footer>
     <!-- footer end -->
+
+    <!-- Modal box item detail start -->
+    <div class="modal" id="item-detail-modal">
+        <div class="modal-container">
+            <a href="#" class="close-icon"><i data-feather="x"></i></a>
+            <div class="modal-content">
+                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Produc 1">
+                <div class="product-content">
+                    <h3>Product 1</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut veniam provident voluptas eius! Nemo
+                        magnam asperiores sit suscipit omnis nam.</p>
+                    <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
+                    <a href="#"><i data-feather="shopping-cart"></i> <span>add to cart</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal box item detail end -->
 
     <!--Feather Icons  -->
     <script>
