@@ -18,13 +18,19 @@
 
     <!-- My style -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- app -->
+    <script src="src/app.js"></script>
 </head>
 
 <body>
 
 
     <!-- Navbar start -->
-    <nav class="navbar">
+    <nav class="navbar" x-data>
         <a href="#" class="navbar-logo">Warung<span>Celana</span>.</a>
 
         <div class="navbar-nav">
@@ -36,7 +42,9 @@
 
         <div class="navbar-extra">
             <a href="#" id="search-button"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="shopping-cart-button">
+                <i data-feather="shopping-cart"></i>
+                <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span></a>
             <a href="#" id="menu"><i data-feather="menu"></i></a>
         </div>
 
@@ -49,29 +57,44 @@
 
         <!-- shopping cart start -->
         <div class="shopping-cart">
-            <div class="cart-item">
-                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
-                <div class="item-detail">
-                    <h3>Product 1</h3>
-                    <div class="item-price">IDR 199.000</div>
+            <template x-for="(item,index) in $store.cart.items" x-keys="index">
+                <div class="cart-item">
+                    <img src="img/blackjeans.jpg" alt="Product 1">
+                    <div class="item-detail">
+                        <h3 x-text="item.name"></h3>
+                        <div class="item-price">
+                            <span x-text="rupiah(item.price)"></span> &times;
+                            <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                            <span x-text="item.quantity"></span>
+                            <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
+                            <span x-text="rupiah(item.total)"></span>
+                        </div>
+                    </div>
                 </div>
-                <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-            <div class="cart-item">
-                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
-                <div class="item-detail">
-                    <h3>Product 1</h3>
-                    <div class="item-price">IDR 199.000</div>
-                </div>
-                <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-            <div class="cart-item">
-                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
-                <div class="item-detail">
-                    <h3>Product 1</h3>
-                    <div class="item-price">IDR 199.000</div>
-                </div>
-                <i data-feather="trash-2" class="remove-item"></i>
+            </template>
+            <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Cart is Empty</h4>
+            <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
+
+            <div class="form-container" x-show="$store.cart.items.length">
+                <form action="" id="checkoutForm">
+                    <h5>Customer Detail</h5>
+
+                    <label for="name">
+                        <span>Nama</span>
+                        <input type="text" name="name" id="name">
+                    </label>
+                    <label for="email">
+                        <span>Email</span>
+                        <input type="email" name="Email" id="Email">
+                    </label>
+                    <label for="phone">
+                        <span>No hp</span>
+                        <input type="number" name="phone" id="phone" autocomplete="off">
+                    </label>
+
+                    <button class="checkout-button" type="submit" id="checkout-button"
+                        value="checkout">Checkout</button>
+                </form>
             </div>
         </div>
         <!-- shopping cart end -->
@@ -107,63 +130,36 @@
     <!--About Section end  -->
 
     <!-- Menu section start -->
-    <section id="katalog" class="katalog">
+    <section id="katalog" class="katalog" x-data="products">
         <h2><span>Katalog</span> Kami</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod, magni asperiores quis obcaecati assumenda
             quia delectus officiis sint omnis vero in neque facere quos rem nemo veniam quasi temporibus.</p>
         <div class="row">
-            <div class="product-card">
-                <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+            <template x-for="(item, index) in items" x-key="index">
+                <div class="product-card">
+                    <div class="product-icons">
+                        <a href="#" @click="$store.cart.add(item)">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <use href="img/feather-sprite.svg#shopping-cart" />
+                            </svg>
+                        </a>
+                        <a href="#" class="item-detail-button">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <use href="img/feather-sprite.svg#eye" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="product-image">
+                        <img src="img/blackjeans.jpg" :alt="item.name">
+                    </div>
+                    <div class="product-content">
+                        <h3 x-text="item.name"></h3>
+                    </div>
+                    <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
                 </div>
-                <div class="product-image">
-                    <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
-                </div>
-                <div class="product-content">
-                    <h3>Black Jeans</h3>
-                </div>
-                <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-                </div>
-                <div class="product-image">
-                    <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
-                </div>
-                <div class="product-content">
-                    <h3>Black Jeans</h3>
-                </div>
-                <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-                </div>
-                <div class="product-image">
-                    <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
-                </div>
-                <div class="product-content">
-                    <h3>Black Jeans</h3>
-                </div>
-                <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
-            </div>
-            <div class="product-card">
-                <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-                </div>
-                <div class="product-image">
-                    <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
-                </div>
-                <div class="product-content">
-                    <h3>Black Jeans</h3>
-                </div>
-                <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
-            </div>
+            </template>
         </div>
     </section>
     <!-- menu section end -->
@@ -225,9 +221,9 @@
         <div class="modal-container">
             <a href="#" class="close-icon"><i data-feather="x"></i></a>
             <div class="modal-content">
-                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Produc 1">
+                <img src="img/matthew-moloney-5NPId7L1_p4-unsplash.jpg" alt="Product 1">
                 <div class="product-content">
-                    <h3>Product 1</h3>
+                    <h3>Black Jeans</h3>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut veniam provident voluptas eius! Nemo
                         magnam asperiores sit suscipit omnis nam.</p>
                     <div class="product-price">IDR 199.000 <span>IDR 250.000</span></div>
