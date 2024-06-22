@@ -139,6 +139,7 @@ body {
     border-radius: 6px;
     font-size: 0.8rem;
     position: absolute;
+    background-color: red;
     top: 0;
     right: -10px;
     -webkit-border-radius: 6px;
